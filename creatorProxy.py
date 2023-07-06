@@ -17,7 +17,7 @@ class color:
 class creatorProxy:
     url=[]
     def GetSites(self):
-        with open("sitesProxy.txt",'r') as site:
+        with open("document/sitesProxy.txt",'r') as site:
             self.url=site.readlines()
             site.close()
         self.url = list(map(lambda x: x.strip(), self.url))
@@ -30,7 +30,7 @@ class creatorProxy:
                     html=requests.get(url,timeout=(5,10))
                     source=(html.text)
                     proxies = re.findall( r'[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\:[\d]{1,6}', source[5:], re.M|re.I)
-                    with open("Proxies.txt","a") as file:
+                    with open("document/Proxies.txt","a") as file:
                         for prx in proxies:  
                             file.write(prx+'\n')
                         file.close()
